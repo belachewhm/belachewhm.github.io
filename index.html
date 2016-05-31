@@ -155,6 +155,35 @@
                     <hr class="primary">
                 </div>
             </div>
+			
+			
+			
+						  <h2>Modal Example</h2>
+						  <!-- Trigger the modal with a button -->
+						  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+						  <!-- Modal -->
+						  <div class="modal fade" id="myModal" role="dialog">
+							<div class="modal-dialog">
+							
+							  <!-- Modal content-->
+							  <div class="modal-content">
+								<div class="modal-header">
+								  <button type="button" class="close" data-dismiss="modal">&times;</button>
+								  <h4 class="modal-title">Modal Header</h4>
+								</div>
+								<div class="modal-body">
+								  <p>Some text in the modal.</p>
+								</div>
+								<div class="modal-footer">
+								  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							  </div>
+							  
+							</div>
+						  </div>
+			
+			
         </div>
 		<div class="container">
 			
@@ -165,8 +194,8 @@
         <div class="container-fluid">
             <div class="row no-gutter">
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/Billy_Dylan.jpg" class="img-responsive" alt="">
+                    <a href="#" data-toggle="modal" data-target="#Brotherhood_Modal" class="portfolio-box">
+                        <img src="img/portfolio/Brotherhood.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -178,14 +207,30 @@
                             </div>
                         </div>
                     </a>
+					<div class="modal fade" id="Brotherhood_Modal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Brotherhood</h4>
+								</div>
+								<div class="modal-body">
+									<p>Brotherhood</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/KS_Letters.jpg" class="img-responsive" alt="">
+                    <a href="#" data-toggle="modal" data-target="#Family_Modal" class="portfolio-box">
+                        <img src="img/portfolio/Family.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Category
+                                    Family
                                 </div>
                                 <div class="project-name">
                                     Project Name
@@ -193,10 +238,26 @@
                             </div>
                         </div>
                     </a>
+					<div class="modal fade" id="Family_Modal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Family</h4>
+								</div>
+								<div class="modal-body">
+									<p>Family</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/Graduation.jpg" class="img-responsive" alt="">
+                    <a href="#" data-toggle="modal" data-target="#Scholarship_Modal" class="portfolio-box">
+                        <img src="img/portfolio/Scholarship.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -208,59 +269,185 @@
                             </div>
                         </div>
                     </a>
+					<div class="modal fade" id="Scholarship_Modal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Scholarship</h4>
+								</div>
+								<div class="modal-body">
+									<p>Scholarship</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/Leap_SE.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Professionalism
-                                </div>
-                                <div class="project-name">
-                                    Software Engineering - Fidelity Investments
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/Leap_MDAC.jpg" class="img-responsive" alt="">
+                    <a href="#" data-toggle="modal" data-target="#Teamwork_Modal" class="portfolio-box">
+                        <img src="img/portfolio/Teamwork.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
                                     Teamwork
                                 </div>
                                 <div class="project-name">
-                                    MDAC Project Team
+                                   MDAC Project Team
                                 </div>
                             </div>
                         </div>
                     </a>
+					<div class="modal fade" id="Teamwork_Modal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Teamwork</h4>
+								</div>
+								<div class="modal-body">
+									<p>Teamwork</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" data-toggle="modal" data-target="#Professionalism_Modal" class="portfolio-box">
+                        <img src="img/portfolio/Professionalism.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Professionalism
+                                </div>
+                                <div class="project-name">
+									 Software Engineering - Fidelity Investments
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+					<div class="modal fade" id="Professionalism_Modal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Professionalism</h4>
+								</div>
+								<div class="modal-body">
+									<p>Professionalism</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" data-toggle="modal" data-target="#Service_Modal" class="portfolio-box">
+                        <img src="img/portfolio/Service.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Service
+                                </div>
+                                <div class="project-name">
+                                    The Salvation Army
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+					<div class="modal fade" id="Service_Modal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Service</h4>
+								</div>
+								<div class="modal-body">
+									<p>Service</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/Leap_Squad.jpg" class="img-responsive" alt="">
+                        <img src="img/portfolio/KS_Letters.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    KS_Letters
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+					<div class="modal fade" id="Brotherhood_Modal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Modal Header</h4>
+								</div>
+								<div class="modal-body">
+									<p>Some text in the modal.</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" data-toggle="modal" data-target="#Friendship_Modal" class="portfolio-box">
+                        <img src="img/portfolio/Friendship.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
                                     Friendship
                                 </div>
                                 <div class="project-name">
-                                    The Squad
+                                    Project Name
                                 </div>
                             </div>
                         </div>
                     </a>
+					<div class="modal fade" id="Friendship_Modal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Friendship</h4>
+								</div>
+								<div class="modal-body">
+									<p>Friendship</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/1.jpg" class="img-responsive" alt="">
+                        <img src="img/portfolio/Travel.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Category
+                                    Travel
                                 </div>
                                 <div class="project-name">
                                     Project Name
@@ -268,81 +455,22 @@
                             </div>
                         </div>
                     </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/2.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/3.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/4.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/5.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/6.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+					<div class="modal fade" id="Brotherhood_Modal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Travel</h4>
+								</div>
+								<div class="modal-body">
+									<p>Travel</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
                 </div>
             </div>
         </div>
