@@ -26,6 +26,18 @@
                 animation-delay: 2s;
                 animation-iteration-count: infinite;
             }
+
+            header {
+                background-image: none;
+                min-height: 0px;
+            }
+            .carousel-item {
+                height: 100%;
+                min-height: 1080px;
+                background: no-repeat center center scroll;
+                background-size: cover;
+            }
+
         </style>
     </head>
     <body id="page-top">
@@ -38,7 +50,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand page-scroll wow slideInLeft" href="#page-top">Software Engineer</a>
+                    <a class="navbar-brand page-scroll wow slideInLeft" href="#page-top">Belachew Haile-Mariam</a>
                 </div>
                 <div class="collapse navbar-collapse wow slideInRight" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
@@ -64,13 +76,28 @@
                 </div>
             </div>
         </nav>
-        <header>
-            <div class="header-content">
-                <div class="header-content-inner wow slideInLeft">
-                    <h1>Belachew<br>Haile-Mariam</h1>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="img/header-dallas.jpg">
+                </div>
+                <div class="item">
+                    <img src="img/header-seattle.jpg">
+                </div>
+                <div class="item">
+                    <img src="img/header-seattle-2.jpg">
+                </div>
+                <div class="item">
+                    <img src="img/header-washington-dc.jpg">
                 </div>
             </div>
-        </header>
+        </div>
         <section id="about" style="padding-top:0px; padding-bottom:0px;">
             <div class="container">
                 <div class="row">
@@ -448,4 +475,9 @@
         <script src="js/wow.min.js"></script>
         <script src="js/creative.js"></script>
     </body>
+    <script>
+        $('.carousel').carousel({
+            interval: 5000
+        })
+    </script>
 </html>
