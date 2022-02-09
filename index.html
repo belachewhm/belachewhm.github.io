@@ -82,12 +82,14 @@
         <br class="visible-xs">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <!-- Carousel Indicators -->
+            
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
             </ol>
+
             <!-- Carousel Items -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
@@ -139,15 +141,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Carousel Controls -->
-            <a class="left carousel-control" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            
         </div>
         <section id="about" style="padding-top:0px; padding-bottom:0px;">
             <div class="container">
@@ -442,7 +436,7 @@
                     <div class="col-xl-12 col-lg-12 text-center wow flash">
                         <hr class="primary">
                         <a target="_blank" class="the-muse-logo" href="https://www.themuse.com/profiles/capitalone/person/belachew">
-                            <h2 class="section-heading" style="color:white; text-decoration:none;">Check me out on </h2>
+                            <h2 class="section-heading" style="color:white; text-decoration:none;">- Check me out on -</h2>
                             <img style="padding-bottom: 50px;" height="50%" width="50%" alt="https://www.themuse.com/profiles/capitalone/person/belachew" src="img/portfolio/the-muse-logo.svg">
                         </a>
                     </div>
@@ -543,7 +537,9 @@
     </body>
     <script>
         $('.carousel').carousel({
-            interval: 15000
+            interval: 7500,
+            pause: hover,
+            ride: carousel
         })
     </script>
 </html>
