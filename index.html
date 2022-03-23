@@ -107,19 +107,19 @@ div.vertical {
 
 			},
 			error : function(xhr, ajaxOptions, thrownError) {
-
-
 				parent.location.hash= hash;
-
-				//$("#wrongPassword").show();
-				//$("#password").attr("placeholder","wrong password");
 				$("#password").val("");
 				
+				
+				//play taunting sound
+				const music = new Audio('magicword.mp3');
+				music.play();
+				
+				//show taunting gif
 				var img = document.createElement("img");
 				img.src = "error_gif.gif";
 				
 				var src = document.getElementById("error_gif");
-				//src.firstChild.remove();
 				src.replaceChildren(img);
 			}
 		});
