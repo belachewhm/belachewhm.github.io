@@ -66,12 +66,14 @@ div.vertical {
 </style>
 
 <body>
-
+	
 	<div id="loginbox" class="lightbox" >
 		<div class="horizontal">
 			<div class="vertical">
 				<div class="box">
-					<input style="margin: 16px; text-align: center;" id="password" type="password" placeholder="password" /> <br />
+					<div id="error_gif"></div>
+					<input style="margin: 16px; text-align: center;" id="password" type="password" placeholder="enter password" />
+					<br />
 					<button id="loginbutton" type="button">Enter</button>
 					<p id="wrongPassword" style="display: none">wrong password</p>
 				</div>
@@ -110,8 +112,15 @@ div.vertical {
 				parent.location.hash= hash;
 
 				//$("#wrongPassword").show();
-				$("#password").attr("placeholder","wrong password");
+				//$("#password").attr("placeholder","wrong password");
 				$("#password").val("");
+				
+				var img = document.createElement("img");
+				img.src = "error_gif.gif";
+				
+				var src = document.getElementById("error_gif");
+				//src.firstChild.remove();
+				src.replaceChildren(img);
 			}
 		});
 	}
