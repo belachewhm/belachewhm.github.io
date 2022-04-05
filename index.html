@@ -1,143 +1,556 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Developer Highlight</title>
+        <link rel="icon" href="favicon.png">
+        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+        <link rel="stylesheet" href="css/creative.css" type="text/css">
+        <style>
+            .table tbody tr:hover td, .table tbody tr:hover th {
+                color:#222222;
+            }
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title></title>
+            .fadeIn {
+                animation-duration: 3s;
+            }
+            .flash {
+                animation-duration: 3s;
+                animation-delay: 2s;
+                animation-iteration-count: infinite;
+            }
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+            header {
+                background-image: none;
+                min-height: 0px;
+            }
+            .carousel-item {
+                height: 100%;
+                min-height: 1080px;
+                background: no-repeat center center scroll;
+                background-size: cover;
+            }
+            
+            .navbar-brand {
+                font-size: calc(20% + 1vw + 1vh);
+                /* text-transform: none; */ /*get this working*/
+            }
+        </style>
+    </head>
+    <!-- Navbar -->
+    <body id="page-top">
+        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand page-scroll wow slideInLeft" href="#page-top">Belachew Haile-Mariam</a>
+                </div>
+                <div class="collapse navbar-collapse wow slideInRight" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a class="page-scroll" href="#about">About</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#technical-strengths">Tech</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#experience">Experience</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#education">Education</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#resume">Resume</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <br class="visible-xs">
+        <br class="visible-xs">
+        <br class="visible-xs">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <!-- Carousel Indicators -->
+            
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            </ol>
 
-</head>
-
-<style>
-
-body {
-
-	background-image: url('grunge_patterns.jpg');
-	background-attachment: fixed;
-	color: #333;
-}
-
-.box {
-	border-radius: 3px;
-	background: rgba(101, 101, 101, 0.7); margin: auto; padding: 12px;
-}
-
-.lightbox {
-	zoom: 1.5;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(10, 10, 10, 0.8);
-	text-align: center;
-	margin: auto;
-
-}
-
-div.horizontal {
-	display: flex;
-	justify-content: center;
-	height: 100%;
-}
-
-div.vertical {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	width: 100%;
-}
-
-::-webkit-input-placeholder {
-   color: #955;
-   text-align: center;
-}
-
-::-moz-placeholder {
-   color: #955;
-   text-align: center;
-}
-
-:-ms-input-placeholder {
-   color: #955;
-   text-align: center;
-}
-
-</style>
-
-<body>
-	
-	<div id="loginbox" class="lightbox" >
-		<div class="horizontal">
-			<div class="vertical">
-				<div class="box">
-					<div id="error_gif"></div>
-					<input style="margin: 16px; text-align: center;" id="password" type="password" placeholder="enter password" />
-					<br />
-					<button id="loginbutton" type="button">Enter</button>
-					<p id="wrongPassword" style="display: none">wrong password</p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-
-
-	 <script type="text/javascript" src="https://rawcdn.githack.com/chrisveness/crypto/7067ee62f18c76dd4a9d372a00e647205460b62b/sha1.js"></script>
-
-	<script type="text/javascript">
-	"use strict";
-
-
-	function loadPage(pwd) {
-
-		var hash= pwd;
-		hash= Sha1.hash(pwd);
-		var url= hash + "/index.html";
-
-		$.ajax({
-			url : url,
-			dataType : "html",
-			success : function(data) {
-
-				window.location= url;
-
-			},
-			error : function(xhr, ajaxOptions, thrownError) {
-				parent.location.hash= hash;
-				$("#password").val("");
-				
-				
-				//play taunting sound
-				const music = new Audio('magicword.mp3');
-				music.play();
-				
-				//show taunting gif
-				var img = document.createElement("img");
-				img.src = "error_gif.gif";
-				
-				var src = document.getElementById("error_gif");
-				src.replaceChildren(img);
-			}
-		});
-	}
-
-
-	$("#loginbutton").on("click", function() {
-		loadPage($("#password").val());
-	});
-	$("#password").keypress(function(e) {
-		if (e.which == 13) {
-
-			loadPage($("#password").val());
-		}
-	});
-	$("#password").focus();
-
-	</script>
-
-</body>
+            <!-- Carousel Items -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="img/carousel/header-dallas.jpg">
+                    <div class="carousel-caption">
+                        <h3>Dallas, TX</h3>
+                        <p>
+                            <span class="hidden-xs" style="background-color: #222222;">
+                                Born and raised in the heart of Texas! Dallas will always be my home base.
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="img/carousel/header-raleigh.jpg">
+                    <div class="carousel-caption">
+                        <h3><span style="background-color:#222222">Raleigh, NC</span></h3>
+                        <p>
+                            <span class="hidden-xs" style="background-color: #222222;">
+                                One of my first adventures after graduating college was attending a 5.5 month technical/professional 
+                                training program in North Carolina. I learned a lot, made a lot of friends, and ate a lot of barbeque along the way.
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="img/carousel/header-seattle.jpg">
+                    <div class="carousel-caption">
+                        <h3>Seattle, WA</h3>
+                        <p>
+                            <span class="hidden-xs" style="background-color: #222222;">
+                                I spent a year and a half living and working in Seattle. It's one of the most beautiful places I've ever had the 
+                                privilege of visiting. Seattle has fantastic food, drinks (especially coffee), natural beauty, and people.
+                                It will always have a special place in my heart!
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="img/carousel/header-washington-dc.jpg">
+                    <div class="carousel-caption">
+                        <h3>Washington, D.C.</h3>
+                        <p>
+                            <span class="hidden-xs" style="background-color: #222222;">
+                                I visit our nation's capital frequently to visit friends and family, 
+                                and have been doing so since I was a kid. DC truly is a second home to me.
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <section id="about" style="padding-top:0px; padding-bottom:0px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 text-center">
+                        <img src="img/headshot.png" height="350px">
+                    </div>
+                    <div class="col-lg-8 text-center">
+                        
+                        <h2 style="padding-top: 10%;" class="section-heading">About Me</h2>
+                        <hr class="primary">
+                        <p>						
+                            Senior Software Engineer with progressive development and leadership experience. Proven technical background 
+                            that includes experience in Software Engineering, DevOps, Automation, Production Support, and Distributed 
+                            Systems. Excels in fastpaced environments with demonstrated skills in leading team projects while ensuring 
+                            optimal business operations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="technical-strengths" class="bg-dark" style="padding-bottom:0px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">Technical Strengths</h2>
+                        <hr class="primary">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <table class="table table-hover table-condensed">
+                            <tbody>
+                                <tr>
+                                    <td>Core Java Development</td>
+                                    <td>Web Development</td>
+                                    <td>Test Driven Development</td>
+                                </tr>
+                                <tr>
+                                    <td>RESTful Web Services</td>
+                                    <td>Domain Driven Design</td>
+                                    <td>Event Driven Architecture</td>
+                                </tr>
+                                <tr>
+                                    <td>Test Driven Design</td>
+                                    <td>Distributed Systems</td>
+                                    <td>Databases</td>
+                                </tr>
+                                <tr>
+                                    <td>Production Support</td>
+                                    <td>Release Management</td>
+                                    <td>DevOps</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="experience" style="padding-bottom:0px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">Professional Experience</h2>
+                        <hr class="primary">
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row no-gutter">
+                    <!-- USAA Tile and Modal-->
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <a href="#" data-toggle="modal" data-target="#USAA_Modal" class="portfolio-box">
+                            <img src="img/portfolio/usaa_logo.png" class="img-responsive" alt="">
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-name">
+                                        Senior Software Engineer
+                                        <br>
+                                        Technical Lead
+                                        <br>
+                                        Software Engineer
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="modal fade" id="USAA_Modal" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">USAA</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4>Software Engineer</h4>
+                                        <h5>Bank Deposits Technology | Plano, TX | April 2020 – Present</h5>
+                                        <ul>
+                                            <li>Validating the code base associated with the re-design of bank statements</li>
+                                        </ul>
+                                        <h5>Production, Innovation, and Governance Services | Plano, TX | September 2019 – April 2020</h5>
+                                        <ul>
+                                            <li>Worked in a development team that was responsible for the creation and deployment of an internal tool that tracks
+                                                the migration status of service accounts as they move from a legacy system to Cyber Ark. Major technologies
+                                                used include: Angular 6, Java, Spring Boot, Gradle, Resilience4J, Docker, Kubernetes, Relational Databases
+                                                (MSSQL, DB2)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Capital One Tile and Modal-->
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <a href="#" data-toggle="modal" data-target="#Capital_One_Modal" class="portfolio-box">
+                            <img src="img/portfolio/capital_one_logo.png" class="img-responsive" alt="">
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-name">
+                                        Software Engineer
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="modal fade" id="Capital_One_Modal" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Capital One</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4>Software Engineer</h4>
+                                        <h5>Emerging Products | Seattle, WA | April 2018 – September 2019</h5>
+                                        <ul>
+                                            <li>Worked on the back end of a distributed system that utilized technologies such as Java, Spring Boot,
+                                                Axon/CQRS, Docker, Kafka, Hystrix, and AWS to build micro-services and RESTful APIs</li>
+                                            <li>Worked closely with business partners to groom our project backlog, create stories, define acceptance criteria,
+                                                demonstrate completed stories, and ensure that all stories meet our definition of done before being worked on</li>
+                                            <li>Reviewed API documentation of a third-party vendor and built customer on-boarding/account funding features</li>
+                                            <li>Used Hystrix to add retry logic to parts of our system that interact with external services</li>
+                                            <li>Integrated our system with DynamoDB global tables to ensure no duplication of processed events, and also to
+                                                ensure a seamless system transition from one region to another in a disaster/failover scenario</li>
+                                            <li>Built custom swagger meta-annotations to increase code-reuse and standardize API documentation</li>
+                                            <li>On-boarded teams of developers to the back end of the project by creating technical documentation and leading a
+                                                workshop where we discussed all relevant information required to start contributing to the project</li>
+                                        </ul>
+                                        <h5>Home Loans Servicing | Plano, TX | April 2017 – March 2018</h5>
+                                        <ul>
+                                            <li>Designed and implemented a testing solution that involved wrapping a Spring Boot application around existing
+                                                Selenium/Cucumber test automation and exposing it as a set of RESTful web services and a custom SwaggerUI
+                                                interface. The application was then Dockerized, and deployed to AWS for start of day production validations,
+                                                infrastructure rehydrations, and L3 production support application monitoring</li>
+                                            <li>Refactored and added new features to an internal application that tracks the progress of home loans as they move
+                                                from the originations to servicing department. Angular Front end with a Java/Spring Back end</li>
+                                            <li>Automated a manual internal audit process using Java, Splunk, and SQL. Splunk logs from our online portal were
+                                                cross-referenced with loan boarding data to validate that only customers who clicked an "I accept" button on our
+                                                terms and conditions page were enrolled in recurring payments. A PDF report was then generated outlining every
+                                                loan that either passed or failed the audit</li>
+                                            <li>Supporting production deployments, and testing/validating infrastructure rehydrations</li>
+                                            <li>Resolved 234 production support tickets, including 212 customer digital escalations</li>
+                                            <li>Built a Jira Dashboard using Jira queries and filters that tracked my team's progress on resolving customer digital
+                                                escalations. This was extremely effective in helping us stay on top of incoming issues, and helped us reduce our
+                                                ticket backlog in a timely and efficient manner</li>
+                                            <li>Migrated Jenkins build jobs from an on-prem Jenkins 1.x instance to a Jenkins 2.x instance running on AWS</li>
+                                            <li>Utilized GitHub, Jenkins, and cURL to automate part of our QA and Production deployments to AWS</li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fidelity Tile and Modal -->
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <a href="#" data-toggle="modal" data-target="#Fidelity_Modal" class="portfolio-box">
+                            <img src="img/portfolio/fidelity_logo.png" class="img-responsive" alt="">
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-name">
+                                        <ul style="list-style-type:none">
+                                            Software Engineer
+                                            <br>
+                                            Associate Software Engineer
+                                            <br>
+                                            Technical Intern
+                                         </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="modal fade" id="Fidelity_Modal" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Fidelity Investments</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4>Software Engineer</h4>
+                                        <h5>Pricing and Cash Management Services | Westlake, TX | January 2017 – March 2017</h5>
+                                        <ul>
+                                            <li>Reverse engineered a Java web application from a WAR file (created through an Ant build) into a multi-module
+                                                Maven project, while simultaneously migrating the application from Subversion to Git. This shrunk the size of the
+                                                code base down from over 4 GB to approximately 45 MB, and improved the speed and consistency of each build</li>
+                                            <li>Wrote scripts to automatically download, install, and configure software on Windows machines</li>
+                                            <li>Installed and configured Jenkins agents to run on virtual machines</li>
+                                            <li>Migrated over 50 test automation source code repositories from SVN to Git, and renamed each project to follow a
+                                                consistent naming convention to make them more easily identifiable</li>
+                                            <li>Created a Maven parent project that defined clear and specific build goals for compilation, testing, packaging,
+                                                installation, deployment, and reporting</li>
+                                        </ul>
+                                        <h4>Associate Software Engineer</h4>
+                                        <h5>Pricing and Cash Management Services | Westlake, TX | January 2016 – January 2017</h5>
+                                        <ul>
+                                            <li>Developed a migration strategy to move development teams and their code repositories from Subversion to Git</li>
+                                            <li>Facilitated training sessions to teach source control concepts using Git, Stash, SourceTree, and different
+                                                development workflows (Central Repository, Feature Branches, Gitflow)</li>
+                                            <li>Onboarded new and existing applications to CI/CD Jenkins pipelines, and modified existing pipelines as needed</li>
+                                            <li>Worked in a development team to create and maintain a library of common test automation functions in Java</li>
+                                            <li>Migrated Java applications from Ant to Maven</li>
+                                            <li>Converted manual test cases into automated tests, and incorporated them into existing CI/CD pipelines</li>
+                                        </ul>
+                                        <h5>Leap Program | Cary, NC | August 2015 – December 2015</h5>
+                                        <ul>
+                                            <li>Completed training modules on Object-Oriented Analysis & Design, UNIX Essentials, Oracle 11g & Data
+                                                Modeling, Big Data, Java/XML, The Spring Framework, Service Oriented Architecture, Dynamic Web
+                                                Applications, and C#</li>
+                                            <li>Developed a system for Fidelity’s Asset Management division to import, normalize, and store data from credit
+                                                rating agencies into Hadoop. This allowed the firm to find credit rating mismatches between that information and
+                                                data imported from credit rating aggregation services, saving the company millions of dollars in liabilities</li>
+                                        </ul>
+                                        <h4>Technical Intern</h4>
+                                        <h5>Pricing and Cash Management Services | Westlake, TX | June 2014 – August 2014</h5>
+                                        <ul>
+                                            <li>Tested RESTful web services to measure latency, find security vulnerabilities, and ensure correct responses</li>
+                                            <li>Constructed a web dashboard to showcase project overviews and associated metrics</li>
+                                            <li>Managed and updated an online catalog of the services created</li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ayoka Tile and Modal -->
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <a href="#" data-toggle="modal" data-target="#Ayoka_Modal" class="portfolio-box">
+                            <img src="img/portfolio/ayoka_logo.png" class="img-responsive" alt="">
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-name">
+                                        Web Application Developer Intern
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="modal fade" id="Ayoka_Modal" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Ayoka Systems</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4>Web Application Developer Intern</h4>
+                                        <h5>Arlington, TX | June 2013 – May 2014</h5>
+                                        <ul>
+                                            <li>Designed and built web applications using the Grails framework and MVC architecture</li>
+                                            <li>Worked with customers to gather requirements and perform testing to verify that specifications were met</li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-dark" class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 text-center wow flash">
+                        <hr class="primary">
+                        <a target="_blank" class="the-muse-logo" href="https://www.themuse.com/profiles/capitalone/person/belachew">
+                            <h2 class="section-heading" style="color:white; text-decoration:none;">- Check me out on -</h2>
+                            <img style="padding-bottom: 50px;" height="50%" width="50%" alt="https://www.themuse.com/profiles/capitalone/person/belachew" src="img/portfolio/the-muse-logo.svg">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="education" style="padding-bottom:0px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 text-center">
+                        <h2 class="section-heading">Education</h2>
+                        <hr class="primary">
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row no-gutter">
+                    <!-- UTA Tile and Modal -->
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <a href="#" data-toggle="modal" data-target="#UTA_Modal" class="portfolio-box" style="max-width: 100%;">
+                            <img src="img/portfolio/UTA_Engineer_Banner.png" class="img-responsive" alt=""
+                            style="display: block;margin-left: auto;margin-right: auto;">
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-category text-faded">
+                                        The University of Texas at Arlington
+                                    </div>
+                                    <div class="project-name">
+                                        Bachelor of Science in Computer Engineering
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="modal fade" id="UTA_Modal" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">The University of Texas at Arlington</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4>Bachelor of Science</h4>
+                                        <h5>Computer Engineering | Arlington, TX | August 2010 – May 2015</h5>
+                                        <ul>
+                                            <li>Senior Design Project Leader, Team SmartGrass</li>
+                                            <li>Founding Father of the Theta-Omega Chapter of the Kappa Sigma Fraternity</li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-dark" id="resume">
+            <div class="container text-center">
+                <div class="call-to-action">
+                    <h2>Wanna see a copy of my resume?</h2>
+                    <a href="docs/Belachew_Haile-Mariam_Resume.pdf" class="btn btn-default btn-xl wow tada">Download &nbsp; <i class="fa fa-file-text" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 text-center">
+                        <h2 class="section-heading">Let's Get In Touch!</h2>
+                        <hr class="primary">
+                        <p>If you'd like to contact me, feel free to send me an email or direct message on LinkedIn!</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 text-center">
+                        <a href="mailto:belachewhm@gmail.com">
+                            <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                            <p>Email</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <a href="https://www.linkedin.com/in/belachewhm">
+                            <i class="fa fa-linkedin-square fa-3x wow bounceIn"></i>
+                            <p>LinkedIn</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <a href="https://github.com/belachewhm">
+                            <i class="fa fa-github-square fa-3x wow bounceIn"></i>
+                            <p>Github</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.easing.min.js"></script>
+        <script src="js/jquery.fittext.js"></script>
+        <script src="js/wow.min.js"></script>
+        <script src="js/creative.js"></script>
+    </body>
+    <script>
+        $('.carousel').carousel({
+            interval: 7500,
+            pause: hover,
+            ride: carousel
+        })
+    </script>
 </html>
