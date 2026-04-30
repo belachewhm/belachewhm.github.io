@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pkill -f \"npx serve\")",
+      "Bash(pkill -f \"serve \\\\.\")"
+    ]
+  }
+}
