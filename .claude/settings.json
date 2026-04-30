@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git -C /Users/belachewhm/repos/git/belachewhm log origin/master..HEAD --oneline)"
+      "Bash(git -C /Users/belachewhm/repos/git/belachewhm log origin/master..HEAD --oneline)",
+      "Bash(git -C /Users/belachewhm/repos/git/belachewhm add index.html custom.css)",
+      "Bash(git -C /Users/belachewhm/repos/git/belachewhm commit -m ' *)"
     ]
   }
 }
