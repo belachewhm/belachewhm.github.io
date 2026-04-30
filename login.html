@@ -112,6 +112,7 @@
                     <li class="nav-item"><a class="nav-link" href="index.html#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#resume">Resume</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tetris.html">Tetris</a></li>
                     <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
                 </ul>
             </div>
@@ -124,6 +125,9 @@
                 <i class="fa fa-exclamation-circle me-2"></i>
                 Invalid username or password. Please try again.
             </div>
+
+            <img id="error-gif" src="" alt="" style="display:none;width:100%;border-radius:6px;margin-bottom:1rem;">
+            <audio id="error-sound" src="magicword.mp3" preload="auto"></audio>
 
             <form id="login-form" novalidate>
                 <div class="mb-3">
@@ -149,7 +153,20 @@
     <script>
         document.getElementById('login-form').addEventListener('submit', function(e) {
             e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            if (!username || !password) return;
             document.getElementById('error-alert').classList.remove('d-none');
+
+            const gif = document.getElementById('error-gif');
+            gif.style.display = 'block';
+            gif.src = '';
+            gif.src = 'error_gif.gif';
+
+            const sound = document.getElementById('error-sound');
+            sound.currentTime = 0;
+            sound.play();
+
             document.getElementById('password').value = '';
             document.getElementById('password').focus();
         });

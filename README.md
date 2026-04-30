@@ -12,7 +12,8 @@ Personal portfolio and demo site for Belachew "Billy" Haile-Mariam, Lead Softwar
 ## Pages
 
 - `index.html` — main portfolio (about, skills, experience, education, resume, contact)
-- `login.html` — demo login page (always rejects auth)
+- `login.html` — demo login page (always rejects auth; shows error gif + plays sound on bad attempt)
+- `tetris.html` — playable Tetris game with Korobeiniki theme music, difficulty selector, and music toggle
 
 ## Running locally
 
