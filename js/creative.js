@@ -17,6 +17,6 @@ document.querySelectorAll('a.page-scroll').forEach(anchor => {
 
 // Toggle scrolled class on navbar: white at top, transparent when scrolled
 const mainNav = document.getElementById('mainNav');
-const updateNav = () => mainNav.classList.toggle('scrolled', window.scrollY <= 100);
+const updateNav = () => mainNav.classList.toggle('scrolled', window.scrollY > 100);
 updateNav();
 window.addEventListener('scroll', updateNav, { passive: true });
