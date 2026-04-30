@@ -666,7 +666,7 @@
 
         if (absDx >= absDy) {
             // horizontal swipe → move proportional to distance (1 cell per BLOCK px)
-            const steps = Math.max(1, Math.round(absDx / BLOCK));
+            const steps = Math.max(1, Math.round(absDx / 20));
             const dir = dx < 0 ? -1 : 1;
             for (let i = 0; i < steps; i++) {
                 if (!collides(piece.matrix, piece.x + dir, piece.y)) piece.x += dir;
