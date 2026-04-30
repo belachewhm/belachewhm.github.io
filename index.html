@@ -5,67 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Billy Haile-Mariam — Lead Software Engineer specializing in Java, distributed systems, and DevOps.">
     <meta name="author" content="Belachew Haile-Mariam">
+    <meta property="og:title" content="Billy Haile-Mariam">
+    <meta property="og:description" content="Lead Software Engineer specializing in Java, distributed systems, and DevOps.">
+    <meta property="og:image" content="img/headshot.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Billy Haile-Mariam">
+    <meta name="twitter:description" content="Lead Software Engineer specializing in Java, distributed systems, and DevOps.">
+    <meta name="twitter:image" content="img/headshot.png">
     <title>Billy Haile-Mariam</title>
     <link rel="icon" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800|Merriweather:400,300,300italic,400italic,700,700italic,900,900italic">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/v4-shims.min.css">
     <link rel="stylesheet" href="css/creative.css">
     <link rel="stylesheet" href="custom.css">
 </head>
 <body id="page-top">
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <nav id="mainNav" class="navbar navbar-expand-md fixed-top">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll wow slideInLeft" href="#page-top">Billy Haile-Mariam</a>
-            </div>
-            <div class="collapse navbar-collapse wow slideInRight" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a class="page-scroll" href="#about">About</a></li>
-                    <li><a class="page-scroll" href="#technical-strengths">Tech</a></li>
-                    <li><a class="page-scroll" href="#experience">Experience</a></li>
-                    <li><a class="page-scroll" href="#education">Education</a></li>
-                    <li><a class="page-scroll" href="#resume">Resume</a></li>
-                    <li><a class="page-scroll" href="#contact">Contact</a></li>
+            <a class="navbar-brand page-scroll" href="#page-top">Billy Haile-Mariam</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link page-scroll" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link page-scroll" href="#technical-strengths">Tech</a></li>
+                    <li class="nav-item"><a class="nav-link page-scroll" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link page-scroll" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link page-scroll" href="#resume">Resume</a></li>
+                    <li class="nav-item"><a class="nav-link page-scroll" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <br class="visible-xs">
-    <br class="visible-xs">
-    <br class="visible-xs">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="7500">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
                 <img src="img/carousel/header-dallas-small.jpg"
                      srcset="img/carousel/header-dallas-medium.jpg 1920w, img/carousel/header-dallas-large.jpg 3840w"
                      alt="Dallas, TX">
             </div>
-            <div class="item">
+            <div class="carousel-item">
                 <img src="img/carousel/header-raleigh-small.jpg"
                      srcset="img/carousel/header-raleigh-medium.jpg 1920w, img/carousel/header-raleigh-large.jpg 3840w"
                      alt="Raleigh, NC" loading="lazy">
             </div>
-            <div class="item">
+            <div class="carousel-item">
                 <img src="img/carousel/header-seattle-small.jpg"
                      srcset="img/carousel/header-seattle-medium.jpg 1920w, img/carousel/header-seattle-large.jpg 3840w"
                      alt="Seattle, WA" loading="lazy">
             </div>
-            <div class="item">
+            <div class="carousel-item">
                 <img src="img/carousel/header-washington-dc-small.jpg"
                      srcset="img/carousel/header-washington-dc-medium.jpg 1920w, img/carousel/header-washington-dc-large.jpg 3840w"
                      alt="Washington, D.C." loading="lazy">
@@ -81,7 +82,6 @@
                 </div>
                 <div class="col-lg-8 text-center">
                     <h2 style="padding-top:10%;" class="section-heading">About Me</h2>
-                    <hr class="primary">
                     <p>
                         Lead Software Engineer with progressive development and leadership experience. Proven technical background
                         that includes experience in Software Engineering, DevOps, Automation, Production Support, and Distributed
@@ -96,16 +96,15 @@
     <section id="technical-strengths" class="bg-dark" style="padding-bottom:0;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
+                <div class="col-12 text-center">
                     <h2 class="section-heading">Technical Strengths</h2>
-                    <hr class="primary">
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <table class="table table-hover table-condensed">
+                <div class="col-12 text-center">
+                    <table class="table table-hover table-sm">
                         <tbody>
                             <tr>
                                 <td>Core Java Development</td>
@@ -137,30 +136,29 @@
     <section id="experience" style="padding-bottom:0;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
+                <div class="col-12 text-center">
                     <h2 class="section-heading">Professional Experience</h2>
-                    <hr class="primary">
                 </div>
             </div>
         </div>
         <div class="container-fluid">
-            <div class="row no-gutter">
+            <div class="row g-0">
                 <!-- JPMC -->
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <a href="#" data-toggle="modal" data-target="#JPMC_Modal" class="portfolio-box">
-                        <img src="img/portfolio/jpmc_logo.png" class="img-responsive" alt="JPMorgan Chase" loading="lazy">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#JPMC_Modal" class="portfolio-box">
+                        <img src="img/portfolio/jpmc_logo.png" class="img-fluid" alt="JPMorgan Chase" loading="lazy">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">Lead Software Engineer</div>
                             </div>
                         </div>
                     </a>
-                    <div class="modal fade" id="JPMC_Modal" role="dialog">
+                    <div class="modal fade" id="JPMC_Modal" tabindex="-1" aria-labelledby="JPMC_Modal_Label" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">JPMorgan Chase &amp; Co</h4>
+                                    <h5 class="modal-title" id="JPMC_Modal_Label">JPMorgan Chase &amp; Co</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <h4>Lead Software Engineer – Vice President</h4>
@@ -172,28 +170,28 @@
                                     </ul>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Greenwood -->
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <a href="#" data-toggle="modal" data-target="#Greenwood_Modal" class="portfolio-box">
-                        <img src="img/portfolio/greenwood_logo.png" class="img-responsive" alt="Greenwood" loading="lazy">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#Greenwood_Modal" class="portfolio-box">
+                        <img src="img/portfolio/greenwood_logo.png" class="img-fluid" alt="Greenwood" loading="lazy">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">Senior Backend Engineer</div>
                             </div>
                         </div>
                     </a>
-                    <div class="modal fade" id="Greenwood_Modal" role="dialog">
+                    <div class="modal fade" id="Greenwood_Modal" tabindex="-1" aria-labelledby="Greenwood_Modal_Label" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Greenwood Bank</h4>
+                                    <h5 class="modal-title" id="Greenwood_Modal_Label">Greenwood Bank</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <h4>Senior Backend Engineer</h4>
@@ -205,32 +203,32 @@
                                     </ul>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- USAA -->
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <a href="#" data-toggle="modal" data-target="#USAA_Modal" class="portfolio-box">
-                        <img src="img/portfolio/usaa_logo.png" class="img-responsive" alt="USAA" loading="lazy">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#USAA_Modal" class="portfolio-box">
+                        <img src="img/portfolio/usaa_logo.png" class="img-fluid" alt="USAA" loading="lazy">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">
                                     Senior Software Engineer<br>
-                                    Technical Lead <span class="glyphicon glyphicon-hand-up"></span><br>
-                                    Software Engineer <span class="glyphicon glyphicon-hand-up"></span>
+                                    Technical Lead <i class="fa fa-arrow-up"></i><br>
+                                    Software Engineer <i class="fa fa-arrow-up"></i>
                                 </div>
                             </div>
                         </div>
                     </a>
-                    <div class="modal fade" id="USAA_Modal" role="dialog">
+                    <div class="modal fade" id="USAA_Modal" tabindex="-1" aria-labelledby="USAA_Modal_Label" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">USAA</h4>
+                                    <h5 class="modal-title" id="USAA_Modal_Label">USAA</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <h4>Senior Software Engineer</h4>
@@ -239,7 +237,7 @@
                                         <li>Acted as the primary/lead developer on my team. Driving impactful and positive change throughout my
                                             organization. Responsible for code quality, futureproofing, and innovation</li>
                                     </ul>
-                                    <h4>Technical Lead <span class="glyphicon glyphicon-hand-up"></span></h4>
+                                    <h4>Technical Lead <i class="fa fa-arrow-up"></i></h4>
                                     <h5>Bank Deposits Technology | Plano, TX | October 2020 – February 2022</h5>
                                     <ul>
                                         <li>Delivered a redesigned bank statement experience for all USAA member savings and checking accounts.
@@ -249,7 +247,7 @@
                                         <li>Worked with business partners to define, scope, and prioritize functional and non-functional feature requirements</li>
                                         <li>Performed code reviews, design sessions, and providing technical mentorship to team members</li>
                                     </ul>
-                                    <h4>Software Engineer <span class="glyphicon glyphicon-hand-up"></span></h4>
+                                    <h4>Software Engineer <i class="fa fa-arrow-up"></i></h4>
                                     <h5>Bank Deposits Technology | Plano, TX | April 2020 – October 2020</h5>
                                     <ul>
                                         <li>Worked in a development team to redesign bank statements to a modern design, and to present all account
@@ -262,31 +260,31 @@
                                             used include: Angular 6, Java, Spring Boot, Gradle, Resilience4J, Docker, Kubernetes, Relational Databases
                                             (MSSQL, DB2)</li>
                                     </ul>
-                                    <p><span class="glyphicon glyphicon-hand-up"></span> = promoted</p>
+                                    <p><i class="fa fa-arrow-up"></i> = promoted</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Capital One -->
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <a href="#" data-toggle="modal" data-target="#Capital_One_Modal" class="portfolio-box">
-                        <img src="img/portfolio/capital_one_logo.png" class="img-responsive" alt="Capital One" loading="lazy">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#Capital_One_Modal" class="portfolio-box">
+                        <img src="img/portfolio/capital_one_logo.png" class="img-fluid" alt="Capital One" loading="lazy">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">Software Engineer</div>
                             </div>
                         </div>
                     </a>
-                    <div class="modal fade" id="Capital_One_Modal" role="dialog">
+                    <div class="modal fade" id="Capital_One_Modal" tabindex="-1" aria-labelledby="Capital_One_Modal_Label" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Capital One</h4>
+                                    <h5 class="modal-title" id="Capital_One_Modal_Label">Capital One</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <h4>Software Engineer</h4>
@@ -323,32 +321,32 @@
                                     </ul>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Fidelity -->
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <a href="#" data-toggle="modal" data-target="#Fidelity_Modal" class="portfolio-box">
-                        <img src="img/portfolio/fidelity_logo.png" class="img-responsive" alt="Fidelity Investments" loading="lazy">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#Fidelity_Modal" class="portfolio-box">
+                        <img src="img/portfolio/fidelity_logo.png" class="img-fluid" alt="Fidelity Investments" loading="lazy">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">
                                     Software Engineer<br>
-                                    Associate Software Engineer <span class="glyphicon glyphicon-hand-up"></span><br>
+                                    Associate Software Engineer <i class="fa fa-arrow-up"></i><br>
                                     Technical Intern
                                 </div>
                             </div>
                         </div>
                     </a>
-                    <div class="modal fade" id="Fidelity_Modal" role="dialog">
+                    <div class="modal fade" id="Fidelity_Modal" tabindex="-1" aria-labelledby="Fidelity_Modal_Label" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Fidelity Investments</h4>
+                                    <h5 class="modal-title" id="Fidelity_Modal_Label">Fidelity Investments</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <h4>Software Engineer</h4>
@@ -359,7 +357,7 @@
                                             code base down from over 4 GB to approximately 45 MB, and improved the speed and consistency of each build</li>
                                         <li>Wrote scripts to automatically download, install, and configure software on Windows machines</li>
                                     </ul>
-                                    <h4>Associate Software Engineer <span class="glyphicon glyphicon-hand-up"></span></h4>
+                                    <h4>Associate Software Engineer <i class="fa fa-arrow-up"></i></h4>
                                     <h5>Pricing and Cash Management Services | Westlake, TX | January 2016 – January 2017</h5>
                                     <ul>
                                         <li>Developed a migration strategy to move development teams and their code repositories from Subversion to Git</li>
@@ -382,31 +380,31 @@
                                         <li>Constructed a web dashboard to showcase project overviews and associated metrics</li>
                                         <li>Managed and updated an online catalog of the services created</li>
                                     </ul>
-                                    <p><span class="glyphicon glyphicon-hand-up"></span> = promoted</p>
+                                    <p><i class="fa fa-arrow-up"></i> = promoted</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Ayoka -->
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <a href="#" data-toggle="modal" data-target="#Ayoka_Modal" class="portfolio-box">
-                        <img src="img/portfolio/ayoka_logo.png" class="img-responsive" alt="Ayoka Systems" loading="lazy">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#Ayoka_Modal" class="portfolio-box">
+                        <img src="img/portfolio/ayoka_logo.png" class="img-fluid" alt="Ayoka Systems" loading="lazy">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">Web Application Developer Intern</div>
                             </div>
                         </div>
                     </a>
-                    <div class="modal fade" id="Ayoka_Modal" role="dialog">
+                    <div class="modal fade" id="Ayoka_Modal" tabindex="-1" aria-labelledby="Ayoka_Modal_Label" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Ayoka Systems</h4>
+                                    <h5 class="modal-title" id="Ayoka_Modal_Label">Ayoka Systems</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <h4>Web Application Developer Intern</h4>
@@ -417,7 +415,7 @@
                                     </ul>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
@@ -427,8 +425,7 @@
         </div>
         <div class="bg-dark container">
             <div class="row">
-                <div class="col-xs-12 text-center wow flash">
-                    <hr class="primary">
+                <div class="col-12 text-center">
                     <a target="_blank" class="the-muse-logo" href="https://www.themuse.com/profiles/capitalone/person/belachew">
                         <h2 class="section-heading" style="color:white; text-decoration:none;">- Check me out on -</h2>
                         <img style="padding-bottom:50px;" height="50%" width="50%" alt="The Muse" src="img/portfolio/the-muse-logo.svg" loading="lazy">
@@ -441,17 +438,16 @@
     <section id="education" style="padding-bottom:0;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
+                <div class="col-12 text-center">
                     <h2 class="section-heading">Education</h2>
-                    <hr class="primary">
                 </div>
             </div>
         </div>
         <div class="container-fluid">
-            <div class="row no-gutter">
-                <div class="col-xs-12">
-                    <a href="#" data-toggle="modal" data-target="#UTA_Modal" class="portfolio-box" style="max-width:100%;">
-                        <img src="img/portfolio/UTA_Engineer_Banner.png" class="img-responsive" alt="University of Texas at Arlington"
+            <div class="row g-0">
+                <div class="col-12">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#UTA_Modal" class="portfolio-box" style="max-width:100%;">
+                        <img src="img/portfolio/UTA_Engineer_Banner.png" class="img-fluid" alt="University of Texas at Arlington"
                              style="display:block; margin:auto;" loading="lazy">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
@@ -460,12 +456,12 @@
                             </div>
                         </div>
                     </a>
-                    <div class="modal fade" id="UTA_Modal" role="dialog">
+                    <div class="modal fade" id="UTA_Modal" tabindex="-1" aria-labelledby="UTA_Modal_Label" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">The University of Texas at Arlington</h4>
+                                    <h5 class="modal-title" id="UTA_Modal_Label">The University of Texas at Arlington</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <h4>Bachelor of Science</h4>
@@ -476,7 +472,7 @@
                                     </ul>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
@@ -490,7 +486,7 @@
         <div class="container text-center">
             <div class="call-to-action">
                 <h2>Wanna see a copy of my resume?</h2>
-                <a href="docs/Billy_Haile-Mariam_Resume.pdf" class="btn btn-default btn-xl wow tada">
+                <a href="docs/Billy_Haile-Mariam_Resume.pdf" class="btn btn-default btn-xl">
                     Download &nbsp;<i class="fa fa-file-text" aria-hidden="true"></i>
                 </a>
             </div>
@@ -500,28 +496,27 @@
     <section id="contact">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
+                <div class="col-lg-8 offset-lg-2 text-center">
                     <h2 class="section-heading">Let's Get In Touch!</h2>
-                    <hr class="primary">
                     <p>If you'd like to contact me, feel free to send me an email or direct message on LinkedIn!</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-4 text-center">
                     <a href="mailto:belachewhm@gmail.com">
-                        <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                        <i class="fa fa-envelope-o fa-3x"></i>
                         <p>Email</p>
                     </a>
                 </div>
                 <div class="col-lg-4 text-center">
                     <a href="https://www.linkedin.com/in/belachewhm">
-                        <i class="fa fa-linkedin-square fa-3x wow bounceIn"></i>
+                        <i class="fa fa-linkedin-square fa-3x"></i>
                         <p>LinkedIn</p>
                     </a>
                 </div>
                 <div class="col-lg-4 text-center">
                     <a href="https://github.com/belachewhm">
-                        <i class="fa fa-github-square fa-3x wow bounceIn"></i>
+                        <i class="fa fa-github-square fa-3x"></i>
                         <p>Github</p>
                     </a>
                 </div>
@@ -529,18 +524,7 @@
         </div>
     </section>
 
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/jquery.fittext.js"></script>
-    <script src="js/wow.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/creative.js"></script>
-    <script>
-        $('.carousel').carousel({
-            interval: 7500,
-            pause: "hover",
-            ride: "carousel"
-        });
-    </script>
 </body>
 </html>
