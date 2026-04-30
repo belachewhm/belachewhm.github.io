@@ -1,45 +1,45 @@
 ## Purpose
-This file gives concise, task-focused guidance for AI coding agents working on this repo (a Start Bootstrap "Creative" one-page theme). Use it to quickly find where to change styles, scripts, assets, and how to run the build.
+Concise, task-focused guidance for AI coding agents working on this repo — a personal portfolio and demo site for Belachew "Billy" Haile-Mariam.
 
 ## Big Picture
-- Single-page Bootstrap-based static site. The root HTML is [index.html](index.html). Styling lives under `css/` (built outputs) and `less/` (source). Scripts live in `js/` (see `js/creative.js`). Static assets: `img/` and `fonts/`.
-- Build is Grunt-based: `Gruntfile.js` compiles LESS, minifies JS, and injects a banner. See [Gruntfile.js](Gruntfile.js).
+- Static site with no build step. Two HTML pages: [index.html](index.html) (portfolio) and [login.html](login.html) (demo login page).
+- Styling: `css/creative.css` (base theme) + `custom.css` (project-specific overrides). Edit `custom.css` for most changes; avoid editing `creative.css` unless changing base theme defaults.
+- Scripts: `js/creative.js` — vanilla JS only (no jQuery). Handles smooth scroll and navbar scroll-spy.
+- All dependencies (Bootstrap 5, Font Awesome 6, Google Fonts) are loaded via CDN in each HTML file's `<head>`.
 
-## Quick dev workflows
-- Install dev dependencies: `npm install` (uses `package.json`).
-- Build once: `grunt` (runs `uglify`, `less`, `usebanner`).
-- Live dev: `grunt watch` to recompile `less` and `js` on changes.
+## Quick dev workflow
+No build step required. Serve the root directory with any static file server:
+```
+python3 -m http.server 8080
+```
+Then open `http://localhost:8080` in a browser.
 
 ## Where to make changes
-- CSS source: `less/<name>.less` (the package name is `creative` from `package.json`). Change variables in `less/variables.less` or `less/creative.less` and run `grunt`.
-- Built CSS: `css/creative.css` and `css/creative.min.css` — do not edit generated files directly.
-- Main JS: [js/creative.js](js/creative.js) — it contains page scrolling, nav, and animation initialization.
-- Images and media: `img/` — used directly by `index.html` (examples: `img/carousel/*`, `img/portfolio/*`).
+- **Navbar / layout**: [index.html](index.html) — Bootstrap 5 markup. Nav links use `class="nav-link page-scroll"` for smooth-scroll behavior.
+- **Styles**: `custom.css` for overrides (navbar colors, carousel sizing, modal layout, etc.). Base theme variables are in `css/creative.css`.
+- **Scroll behavior / nav**: [js/creative.js](js/creative.js) — `updateNav()` toggles `.scrolled` class on `#mainNav` based on scroll position. `.scrolled` = white navbar; no class = transparent navbar.
+- **Images**: `img/carousel/` for hero images, `img/portfolio/` for experience/education tiles.
+- **Resume**: `docs/Billy_Haile-Mariam_Resume.pdf`
+- **Login page**: [login.html](login.html) — always rejects auth (demo only). No backend.
+
+## Navbar color system
+Two states driven by the `.scrolled` class on `#mainNav`:
+- `.scrolled` (at top, scrollY ≤ 100): white background, dark/orange text — defined in `#mainNav.scrolled` in `custom.css`
+- no class (scrolled down): transparent, white text — defined in `#mainNav:not(.scrolled)` in `custom.css`
+
+Brand color: `#F05F40` (orange). Hover: `#eb3812`.
 
 ## Patterns & conventions
-- Source vs build: source lives in `less/` and `js/*.js`; built assets are in `css/*.css` and `js/*.min.js`.
-- Naming: `package.json` `name` is used by the Gruntfile templates (`<%= pkg.name %>`). Keep it consistent if you rename files.
-- Banner: `grunt-banner` injects the license header into built files. See `Gruntfile.js` `banner` section.
-
-## Integration & external deps
-- External fonts are loaded from Google Fonts in `index.html`.
-- Font Awesome is stored under `font-awesome/` (local css and fonts).
-- jQuery, Bootstrap and plugins are local in `js/` (e.g., `jquery.js`, `bootstrap.js`, `wow.min.js`) and referenced in `index.html`.
+- Each HTML page is self-contained: includes all CDN links and scripts inline.
+- Modals follow Bootstrap 5 markup (`data-bs-toggle`, `data-bs-target`). Each experience tile has a paired `<div class="modal fade">`.
+- `login.html` navbar always has `.scrolled` class hardcoded (no hero carousel, so always white).
 
 ## Debugging notes
-- No unit tests or CI configured in repository. Validate visual changes by opening `index.html` in a browser or using a simple static server: `npx http-server -c-1 .`.
-- If scripts or styles don't update, confirm `grunt` ran successfully and that the browser cache is cleared (files under `css/` and `js/` are frequently cached).
+- No tests or CI. Validate by opening in a browser with cache disabled (Cmd+Shift+R).
+- If navbar colors look wrong, check scroll position and whether `.scrolled` class is present on `#mainNav`.
+- Font Awesome icon classes use v4 shim (`fa fa-*`) via the CDN shim file — both v4 and v6 class names work.
 
-## Examples (common edits)
-- Update hero/branding text: edit the navbar brand in [index.html](index.html) (search `navbar-brand`).
-- Change animation timing: modify `new WOW().init();` or the CSS in `css/creative.css` / `less/creative.less`.
-- Add a new portfolio tile: follow the markup used in `index.html` portfolio tiles and add images to `img/portfolio/`.
-
-## Files to inspect first
-- [index.html](index.html)
-- [Gruntfile.js](Gruntfile.js)
-- [package.json](package.json)
-- [less/creative.less](less/creative.less)
-- [js/creative.js](js/creative.js)
-
-If any part of this file is unclear or you want more project-specific examples (e.g., how to extend the JS for a new UI widget), tell me which area to expand and I will iterate.
+## Common edits
+- Add a nav link: add `<li class="nav-item"><a class="nav-link page-scroll" href="#section-id">Label</a></li>` in both `index.html` and `login.html` (pointing to `index.html#section-id` in login.html).
+- Add a portfolio tile: copy an existing `.col-12.col-md-6` block in the experience section, update the modal ID, image, and text.
+- Change hero images: replace files in `img/carousel/` (small/medium/large variants) and update `srcset` in `index.html`.
