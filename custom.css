@@ -18,8 +18,24 @@ header {
     background-image: none;
     min-height: 0;
 }
+.carousel {
+    position: relative;
+}
+/* dark gradient at top ensures transparent navbar text is always readable */
+.carousel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 110px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.45), transparent);
+    z-index: 2;
+    pointer-events: none;
+}
 .carousel .carousel-item {
     height: 100vh;
+    height: 100svh; /* iOS Safari: excludes browser chrome so no layout jump */
 }
 .carousel .carousel-item img {
     width: 100%;
@@ -27,8 +43,53 @@ header {
     object-fit: cover;
     object-position: center;
 }
+@media (max-width: 576px) {
+    .carousel .carousel-item {
+        height: 56vw; /* ~16:9 ratio — keeps landscape photos from being over-cropped */
+        min-height: 240px;
+    }
+}
+/* expanded hamburger menu needs a background on mobile */
+@media (max-width: 767px) {
+    .navbar-collapse.show,
+    .navbar-collapse.collapsing {
+        background-color: rgba(0, 0, 0, 0.75);
+        margin: 0 -12px;
+        padding: 0.5rem 12px 1rem;
+    }
+}
 .navbar-brand {
     font-size: calc(20% + 1vw + 1vh);
+}
+/* Override Bootstrap 5.3 CSS variables so the navbar colours work on all screen sizes */
+#mainNav:not(.scrolled) {
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.3);
+    --bs-navbar-color: rgba(255, 255, 255, 0.7);
+    --bs-navbar-hover-color: rgba(255, 255, 255, 1);
+    --bs-navbar-brand-color: rgba(255, 255, 255, 0.7);
+    --bs-navbar-brand-hover-color: rgba(255, 255, 255, 1);
+    --bs-navbar-active-color: rgba(255, 255, 255, 1);
+    --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.5);
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    --bs-nav-link-color: rgba(255, 255, 255, 0.7);
+    --bs-nav-link-hover-color: rgba(255, 255, 255, 1);
+}
+#mainNav.scrolled {
+    background-color: white;
+    border-color: rgba(34, 34, 34, 0.05);
+    --bs-navbar-color: #222;
+    --bs-navbar-hover-color: #F05F40;
+    --bs-navbar-brand-color: #F05F40;
+    --bs-navbar-brand-hover-color: #eb3812;
+    --bs-navbar-active-color: #F05F40;
+    --bs-navbar-toggler-border-color: rgba(34, 34, 34, 0.3);
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2834, 34, 34, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    --bs-nav-link-color: #222;
+    --bs-nav-link-hover-color: #F05F40;
+}
+#mainNav.scrolled .navbar-brand {
+    font-size: 14px;
 }
 .modal-dialog {
     max-height: calc(100vh - 60px);
