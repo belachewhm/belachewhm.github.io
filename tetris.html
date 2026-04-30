@@ -631,6 +631,54 @@
             e.preventDefault();
         }
     }, { passive: false });
+
+    // Touch / swipe controls
+    let touchStartX = 0, touchStartY = 0, touchStartTime = 0;
+    const SWIPE_MIN = 25; // px — below this is a tap
+
+    canvas.addEventListener('touchstart', e => {
+        e.preventDefault();
+        const t = e.touches[0];
+        touchStartX = t.clientX;
+        touchStartY = t.clientY;
+        touchStartTime = Date.now();
+    }, { passive: false });
+
+    canvas.addEventListener('touchmove', e => {
+        e.preventDefault(); // block page scroll while over the canvas
+    }, { passive: false });
+
+    canvas.addEventListener('touchend', e => {
+        e.preventDefault();
+        if (!gameRunning) { startGame(); return; }
+        if (paused) { togglePause(); return; }
+
+        const t = e.changedTouches[0];
+        const dx = t.clientX - touchStartX;
+        const dy = t.clientY - touchStartY;
+        const absDx = Math.abs(dx), absDy = Math.abs(dy);
+
+        if (absDx < SWIPE_MIN && absDy < SWIPE_MIN) {
+            // tap → rotate
+            tryRotate();
+            return;
+        }
+
+        if (absDx >= absDy) {
+            // horizontal swipe → move left / right
+            if (dx < 0) { if (!collides(piece.matrix, piece.x - 1, piece.y)) piece.x--; }
+            else         { if (!collides(piece.matrix, piece.x + 1, piece.y)) piece.x++; }
+        } else {
+            if (dy < 0) {
+                // swipe up → rotate
+                tryRotate();
+            } else {
+                // swipe down: fast = hard drop, slow = soft drop
+                if (Date.now() - touchStartTime < 250) hardDrop();
+                else { moveDown(); dropTimer = 0; }
+            }
+        }
+    }, { passive: false });
     </script>
 </body>
 </html>
