@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(pkill -f \"npx serve\")",
-      "Bash(pkill -f \"serve \\\\.\")"
+      "Bash(pkill -f \"serve \\\\.\")",
+      "Bash(git -C /Users/belachewhm/repos/git/belachewhm remote get-url origin)"
     ]
   }
 }

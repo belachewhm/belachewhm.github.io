@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/belachewhm/repos/git/belachewhm log origin/master..HEAD --oneline)"
+    ]
+  }
+}
