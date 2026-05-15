@@ -108,3 +108,20 @@ header {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
+
+#about .about-copy {
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.75;
+    font-size: 1rem;
+}
+
+#about .about-copy p {
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 992px) {
+    #about .about-copy {
+        text-align: left;
+    }
+}
