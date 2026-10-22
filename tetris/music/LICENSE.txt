@@ -1,0 +1,12 @@
+mountain-king.mid
+  "In the Hall of the Mountain King" (Dans l'antre du roi de la montagne),
+  Peer Gynt Suite No. 1, Op. 46 No. 4, by Edvard Grieg (1843-1907),
+  piano arrangement by the composer.
+  Source: The Mutopia Project, piece Mutopia-2013/12/07-1888,
+  typeset by Coyau from The University Society edition (1918).
+  https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=1888
+  Copyright: Public Domain.
+
+Korobeiniki (traditional) and Mars, the Bringer of War (Gustav Holst, 1914)
+are public-domain compositions arranged directly in music.js.
+"The Long Winter" is an original composition written for this game.

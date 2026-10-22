@@ -57,7 +57,7 @@
             color: #F05F40;
             margin-bottom: 1.25rem;
         }
-        #next-canvas {
+        #next-canvas, #hold-canvas {
             display: block;
             background: #111;
             border: 1px solid #444;
@@ -80,6 +80,35 @@
         }
         .btn-game:hover {
             background-color: #eb3812;
+        }
+        .track-name {
+            margin-top: 0.4rem;
+            font-size: 0.7rem;
+            color: #888;
+            text-align: center;
+        }
+        .vol-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 0.6rem;
+            color: #eee;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .vol-btn {
+            width: 44px;
+            background: #333;
+            border: 1px solid #555;
+            color: #ccc;
+            border-radius: 300px;
+            padding: 0.3rem 0;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .vol-btn:hover {
+            border-color: #F05F40;
+            color: #F05F40;
         }
         .btn-game-muted {
             background-color: #444 !important;
@@ -152,6 +181,19 @@
         .canvas-container {
             position: relative;
         }
+        /* Too narrow for three columns: board on top, then the two panels side by side */
+        @media (max-width: 680px) {
+            .game-wrapper {
+                display: grid;
+                grid-template-columns: repeat(2, 140px);
+                justify-content: center;
+            }
+            .canvas-container {
+                grid-column: 1 / -1;
+                justify-self: center;
+                order: -1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -178,6 +220,34 @@
 
     <main>
         <div class="game-wrapper">
+            <div class="side-panel">
+                <h3>Next</h3>
+                <canvas id="next-canvas" width="120" height="80"></canvas>
+
+                <h3>Hold</h3>
+                <canvas id="hold-canvas" width="120" height="80"></canvas>
+
+                <button class="btn-game" id="music-btn" onclick="cycleMusic()"><i class="fa fa-music me-1"></i>Music</button>
+                <div class="track-name" id="track-name">Korobeiniki</div>
+                <div class="vol-row">
+                    <button class="vol-btn" onclick="changeVolume(-1)" aria-label="Volume down"><i class="fa fa-volume-down"></i></button>
+                    <span id="volume-display">7</span>
+                    <button class="vol-btn" onclick="changeVolume(1)" aria-label="Volume up"><i class="fa fa-volume-up"></i></button>
+                </div>
+
+                <div class="controls-hint">
+                    <span>← → &nbsp; Move</span>
+                    <span>↑ / X &nbsp; Rotate</span>
+                    <span>Z &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rotate left</span>
+                    <span>↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Soft drop</span>
+                    <span>Space &nbsp; Hard drop</span>
+                    <span>C / Shift &nbsp;Hold (5 turns)</span>
+                    <span>M &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Music</span>
+                    <span>− / + &nbsp; Volume</span>
+                    <span>P / Esc &nbsp;Pause</span>
+                </div>
+            </div>
+
             <div class="canvas-container">
                 <canvas id="tetris-canvas" width="300" height="600"></canvas>
                 <div id="overlay">
@@ -197,14 +267,7 @@
                 <h3>Lines</h3>
                 <div class="value" id="lines-display">0</div>
 
-                <h3>Next</h3>
-                <canvas id="next-canvas" width="120" height="100"></canvas>
-
                 <button class="btn-game" id="main-btn" onclick="startGame()">New Game</button>
-
-                <div style="margin-top:0.75rem;">
-                    <button class="btn-game" id="music-btn" onclick="toggleMusic()"><i class="fa fa-music me-1"></i>Music: On</button>
-                </div>
 
                 <div style="margin-top:1.25rem;">
                     <h3>Difficulty</h3>
@@ -216,473 +279,20 @@
                     </div>
                 </div>
 
-                <div class="controls-hint">
-                    <span>← → &nbsp; Move</span>
-                    <span>↑ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rotate</span>
-                    <span>↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Soft drop</span>
-                    <span>Space &nbsp; Hard drop</span>
-                    <span>P / Esc &nbsp;Pause</span>
-                </div>
             </div>
         </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-    'use strict';
-
-    const COLS = 10, ROWS = 20, BLOCK = 30;
-    const COLORS = [
-        null,
-        '#00cfcf', // I — cyan
-        '#f0d000', // O — yellow
-        '#a000f0', // T — purple
-        '#00c000', // S — green
-        '#e00000', // Z — red
-        '#0000e0', // J — blue
-        '#F05F40', // L — orange (site accent)
-    ];
-
-    const PIECES = [
-        null,
-        [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]], // I
-        [[2,2],[2,2]],                               // O
-        [[0,3,0],[3,3,3],[0,0,0]],                   // T
-        [[0,4,4],[4,4,0],[0,0,0]],                   // S
-        [[5,5,0],[0,5,5],[0,0,0]],                   // Z
-        [[6,0,0],[6,6,6],[0,0,0]],                   // J
-        [[0,0,7],[7,7,7],[0,0,0]],                   // L
-    ];
-
-    const POINTS = [0, 100, 300, 500, 800];
-    const DROP_INTERVALS = [800, 700, 600, 500, 400, 300, 250, 200, 150, 100];
-
-    // --- Audio: Korobeiniki (Tetris theme) — traditional folk melody, public domain ---
-    const NOTE_FREQ = {
-        A4:440.00, B4:493.88, C5:523.25, D5:587.33,
-        E5:659.25, F5:698.46, G5:783.99, A5:880.00
-    };
-    const BPM = 160, BEAT = 60 / BPM;
-    const MELODY = [
-        // Part A
-        ['E5',1],['B4',.5],['C5',.5],['D5',1],['C5',.5],['B4',.5],
-        ['A4',1],['A4',.5],['C5',.5],['E5',1],['D5',.5],['C5',.5],
-        ['B4',1.5],['C5',.5],['D5',1],['E5',1],
-        ['C5',1],['A4',1],['A4',2],
-        // Part A (repeat)
-        ['E5',1],['B4',.5],['C5',.5],['D5',1],['C5',.5],['B4',.5],
-        ['A4',1],['A4',.5],['C5',.5],['E5',1],['D5',.5],['C5',.5],
-        ['B4',1.5],['C5',.5],['D5',1],['E5',1],
-        ['C5',1],['A4',1],['A4',2],
-        // Part B
-        ['D5',1.5],['F5',.5],['A5',1],['G5',.5],['F5',.5],
-        ['E5',1.5],['C5',.5],['E5',1],['D5',.5],['C5',.5],
-        ['B4',1.5],['C5',.5],['D5',1],['E5',1],
-        ['C5',1],['A4',1],['A4',2],
-        // Part B (repeat)
-        ['D5',1.5],['F5',.5],['A5',1],['G5',.5],['F5',.5],
-        ['E5',1.5],['C5',.5],['E5',1],['D5',.5],['C5',.5],
-        ['B4',1.5],['C5',.5],['D5',1],['E5',1],
-        ['C5',1],['A4',1],['A4',2],
-    ];
-    const MELODY_DURATION = MELODY.reduce((s,[,d]) => s + d, 0) * BEAT;
-
-    let audioCtx = null, masterGain = null, musicPlaying = false, musicLoopTimeout = null, activeOscs = [];
-
-    function initAudio() {
-        if (audioCtx) return;
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        masterGain = audioCtx.createGain();
-        masterGain.gain.value = 0.12;
-        masterGain.connect(audioCtx.destination);
-    }
-
-    function scheduleNote(freq, startTime, dur) {
-        const osc = audioCtx.createOscillator();
-        const env = audioCtx.createGain();
-        osc.type = 'square';
-        osc.frequency.value = freq;
-        osc.connect(env);
-        env.connect(masterGain);
-        const d = dur * BEAT;
-        env.gain.setValueAtTime(0, startTime);
-        env.gain.linearRampToValueAtTime(1, startTime + 0.01);
-        env.gain.setValueAtTime(1, startTime + d * 0.82);
-        env.gain.linearRampToValueAtTime(0, startTime + d * 0.95);
-        osc.start(startTime);
-        osc.stop(startTime + d);
-        activeOscs.push(osc);
-        osc.onended = () => { const i = activeOscs.indexOf(osc); if (i !== -1) activeOscs.splice(i, 1); };
-    }
-
-    function scheduleMelody(startTime) {
-        let t = startTime;
-        for (const [name, dur] of MELODY) {
-            const freq = NOTE_FREQ[name];
-            if (freq) scheduleNote(freq, t, dur);
-            t += dur * BEAT;
+        // Root-relative when served (works at /tetris and /tetris/), file-relative when opened from disk
+        window.TETRIS_BASE = location.protocol === 'file:' ? '' : '/tetris/';
+        for (const file of ['music.js', 'game.js']) {
+            const s = document.createElement('script');
+            s.src = window.TETRIS_BASE + file;
+            s.async = false; // keep load order: game.js needs Music
+            document.body.appendChild(s);
         }
-        const delay = (startTime + MELODY_DURATION - audioCtx.currentTime - 1.0) * 1000;
-        musicLoopTimeout = setTimeout(() => {
-            if (musicPlaying) scheduleMelody(startTime + MELODY_DURATION);
-        }, Math.max(0, delay));
-    }
-
-    function startMusic() {
-        initAudio();
-        stopMusic(); // always clean up before starting fresh
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
-        masterGain.gain.value = 0.12;
-        musicPlaying = true;
-        scheduleMelody(audioCtx.currentTime + 0.05);
-    }
-
-    function stopMusic() {
-        musicPlaying = false;
-        clearTimeout(musicLoopTimeout);
-        if (!audioCtx) return;
-        // Stop all scheduled oscillators immediately rather than just fading the gain
-        const now = audioCtx.currentTime;
-        for (const osc of activeOscs) {
-            try { osc.stop(now + 0.05); } catch(e) {}
-        }
-        activeOscs = [];
-    }
-
-    const canvas = document.getElementById('tetris-canvas');
-    const ctx = canvas.getContext('2d');
-    const nextCanvas = document.getElementById('next-canvas');
-    const nextCtx = nextCanvas.getContext('2d');
-    const overlay = document.getElementById('overlay');
-    const overlayTitle = document.getElementById('overlay-title');
-    const overlaySub = document.getElementById('overlay-sub');
-    const overlayBtn = document.getElementById('overlay-btn');
-
-    let board, piece, nextPiece, score, level, lines, gameRunning, paused, animId, dropTimer, lastTime;
-    let musicEnabled = true, difficultyOffset = 0;
-
-    function toggleMusic() {
-        musicEnabled = !musicEnabled;
-        const btn = document.getElementById('music-btn');
-        if (musicEnabled) {
-            btn.innerHTML = '<i class="fa fa-music me-1"></i>Music: On';
-            btn.classList.remove('btn-game-muted');
-            if (gameRunning && !paused) startMusic();
-        } else {
-            btn.innerHTML = '<i class="fa fa-music me-1"></i>Music: Off';
-            btn.classList.add('btn-game-muted');
-            stopMusic();
-        }
-    }
-
-    function setDifficulty(offset) {
-        difficultyOffset = offset;
-        document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById('diff-' + offset).classList.add('active');
-    }
-
-    function emptyBoard() {
-        return Array.from({length: ROWS}, () => new Array(COLS).fill(0));
-    }
-
-    function randomPiece() {
-        const id = Math.floor(Math.random() * 7) + 1;
-        const matrix = PIECES[id].map(r => [...r]);
-        return { id, matrix, x: Math.floor((COLS - matrix[0].length) / 2), y: 0 };
-    }
-
-    function startGame() {
-        board = emptyBoard();
-        score = 0; level = 1; lines = 0;
-        piece = randomPiece();
-        nextPiece = randomPiece();
-        gameRunning = true; paused = false;
-        updateHUD();
-        overlay.style.display = 'none';
-        if (animId) cancelAnimationFrame(animId);
-        lastTime = null; dropTimer = 0;
-        animId = requestAnimationFrame(loop);
-        if (musicEnabled) startMusic();
-    }
-
-    function loop(ts) {
-        if (!gameRunning) return;
-        if (!lastTime) lastTime = ts;
-        const dt = ts - lastTime;
-        lastTime = ts;
-
-        if (!paused) {
-            dropTimer += dt;
-            const interval = DROP_INTERVALS[Math.min(level - 1 + difficultyOffset, DROP_INTERVALS.length - 1)];
-            if (dropTimer >= interval) {
-                dropTimer = 0;
-                moveDown();
-            }
-            draw();
-        }
-        animId = requestAnimationFrame(loop);
-    }
-
-    function collides(m, px, py) {
-        for (let r = 0; r < m.length; r++) {
-            for (let c = 0; c < m[r].length; c++) {
-                if (!m[r][c]) continue;
-                const nx = px + c, ny = py + r;
-                if (nx < 0 || nx >= COLS || ny >= ROWS) return true;
-                if (ny >= 0 && board[ny][nx]) return true;
-            }
-        }
-        return false;
-    }
-
-    function lock() {
-        piece.matrix.forEach((row, r) => {
-            row.forEach((val, c) => {
-                if (val && piece.y + r >= 0) {
-                    board[piece.y + r][piece.x + c] = val;
-                }
-            });
-        });
-        clearLines();
-        piece = nextPiece;
-        nextPiece = randomPiece();
-        if (collides(piece.matrix, piece.x, piece.y)) {
-            gameOver();
-            return;
-        }
-        drawNext();
-    }
-
-    function clearLines() {
-        let cleared = 0;
-        for (let r = ROWS - 1; r >= 0; r--) {
-            if (board[r].every(v => v !== 0)) {
-                board.splice(r, 1);
-                board.unshift(new Array(COLS).fill(0));
-                cleared++;
-                r++;
-            }
-        }
-        if (cleared) {
-            lines += cleared;
-            score += POINTS[cleared] * level;
-            level = Math.floor(lines / 10) + 1;
-            updateHUD();
-        }
-    }
-
-    function moveDown() {
-        if (!collides(piece.matrix, piece.x, piece.y + 1)) {
-            piece.y++;
-        } else {
-            lock();
-        }
-    }
-
-    function rotate(matrix) {
-        const n = matrix.length;
-        return matrix[0].map((_, c) => matrix.map((_, r) => matrix[n - 1 - r][c]));
-    }
-
-    function tryRotate() {
-        const rotated = rotate(piece.matrix);
-        // wall kick: try center, then nudge left/right
-        for (const dx of [0, -1, 1, -2, 2]) {
-            if (!collides(rotated, piece.x + dx, piece.y)) {
-                piece.matrix = rotated;
-                piece.x += dx;
-                return;
-            }
-        }
-    }
-
-    function hardDrop() {
-        while (!collides(piece.matrix, piece.x, piece.y + 1)) {
-            piece.y++;
-        }
-        lock();
-    }
-
-    function gameOver() {
-        gameRunning = false;
-        stopMusic();
-        overlayTitle.textContent = 'Game Over';
-        overlaySub.textContent = 'Score: ' + score.toLocaleString();
-        overlayBtn.textContent = 'Play Again';
-        overlay.style.display = 'flex';
-    }
-
-    function togglePause() {
-        if (!gameRunning) return;
-        paused = !paused;
-        if (paused) {
-            if (audioCtx && musicEnabled) audioCtx.suspend();
-            overlayTitle.textContent = 'Paused';
-            overlaySub.textContent = '';
-            overlayBtn.textContent = 'Resume';
-            overlayBtn.onclick = togglePause;
-            overlay.style.display = 'flex';
-        } else {
-            if (audioCtx && musicEnabled) audioCtx.resume();
-            overlayBtn.onclick = startGame;
-            overlay.style.display = 'none';
-            lastTime = null;
-        }
-    }
-
-    function updateHUD() {
-        document.getElementById('score-display').textContent = score.toLocaleString();
-        document.getElementById('level-display').textContent = level;
-        document.getElementById('lines-display').textContent = lines;
-    }
-
-    function drawBlock(context, x, y, colorId, size) {
-        const color = COLORS[colorId];
-        context.fillStyle = color;
-        context.fillRect(x * size + 1, y * size + 1, size - 2, size - 2);
-        // subtle highlight
-        context.fillStyle = 'rgba(255,255,255,0.15)';
-        context.fillRect(x * size + 1, y * size + 1, size - 2, 4);
-    }
-
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        // grid
-        ctx.strokeStyle = '#1a1a1a';
-        ctx.lineWidth = 0.5;
-        for (let r = 0; r <= ROWS; r++) {
-            ctx.beginPath(); ctx.moveTo(0, r * BLOCK); ctx.lineTo(COLS * BLOCK, r * BLOCK); ctx.stroke();
-        }
-        for (let c = 0; c <= COLS; c++) {
-            ctx.beginPath(); ctx.moveTo(c * BLOCK, 0); ctx.lineTo(c * BLOCK, ROWS * BLOCK); ctx.stroke();
-        }
-        // board
-        board.forEach((row, r) => row.forEach((val, c) => { if (val) drawBlock(ctx, c, r, val, BLOCK); }));
-        // ghost piece
-        let ghostY = piece.y;
-        while (!collides(piece.matrix, piece.x, ghostY + 1)) ghostY++;
-        if (ghostY !== piece.y) {
-            piece.matrix.forEach((row, r) => row.forEach((val, c) => {
-                if (val) {
-                    ctx.fillStyle = 'rgba(255,255,255,0.1)';
-                    ctx.fillRect((piece.x + c) * BLOCK + 1, (ghostY + r) * BLOCK + 1, BLOCK - 2, BLOCK - 2);
-                }
-            }));
-        }
-        // active piece
-        piece.matrix.forEach((row, r) => row.forEach((val, c) => {
-            if (val) drawBlock(ctx, piece.x + c, piece.y + r, val, BLOCK);
-        }));
-    }
-
-    function drawNext() {
-        nextCtx.clearRect(0, 0, nextCanvas.width, nextCanvas.height);
-        const m = nextPiece.matrix;
-        const bSize = 24;
-        const offX = Math.floor((nextCanvas.width / bSize - m[0].length) / 2);
-        const offY = Math.floor((nextCanvas.height / bSize - m.length) / 2);
-        m.forEach((row, r) => row.forEach((val, c) => {
-            if (val) {
-                nextCtx.fillStyle = COLORS[val];
-                nextCtx.fillRect((offX + c) * bSize + 1, (offY + r) * bSize + 1, bSize - 2, bSize - 2);
-                nextCtx.fillStyle = 'rgba(255,255,255,0.15)';
-                nextCtx.fillRect((offX + c) * bSize + 1, (offY + r) * bSize + 1, bSize - 2, 4);
-            }
-        }));
-    }
-
-    document.addEventListener('keydown', e => {
-        if (!gameRunning && e.code !== 'Enter') return;
-        switch (e.code) {
-            case 'ArrowLeft':
-                e.preventDefault();
-                if (!paused && !collides(piece.matrix, piece.x - 1, piece.y)) piece.x--;
-                break;
-            case 'ArrowRight':
-                e.preventDefault();
-                if (!paused && !collides(piece.matrix, piece.x + 1, piece.y)) piece.x++;
-                break;
-            case 'ArrowDown':
-                e.preventDefault();
-                if (!paused) { moveDown(); dropTimer = 0; }
-                break;
-            case 'ArrowUp':
-                e.preventDefault();
-                if (!paused) tryRotate();
-                break;
-            case 'Space':
-                e.preventDefault();
-                if (!paused) hardDrop();
-                break;
-            case 'KeyP':
-            case 'Escape':
-                togglePause();
-                break;
-            case 'Enter':
-                if (!gameRunning) startGame();
-                break;
-        }
-    });
-
-    // Prevent arrow key page scroll while game is active
-    window.addEventListener('keydown', e => {
-        if (gameRunning && ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code)) {
-            e.preventDefault();
-        }
-    }, { passive: false });
-
-    // Touch / swipe controls
-    let touchStartX = 0, touchStartY = 0, touchStartTime = 0;
-    const SWIPE_MIN = 25; // px — below this is a tap
-
-    canvas.addEventListener('touchstart', e => {
-        e.preventDefault();
-        const t = e.touches[0];
-        touchStartX = t.clientX;
-        touchStartY = t.clientY;
-        touchStartTime = Date.now();
-    }, { passive: false });
-
-    canvas.addEventListener('touchmove', e => {
-        e.preventDefault(); // block page scroll while over the canvas
-    }, { passive: false });
-
-    canvas.addEventListener('touchend', e => {
-        e.preventDefault();
-        if (!gameRunning) { startGame(); return; }
-        if (paused) { togglePause(); return; }
-
-        const t = e.changedTouches[0];
-        const dx = t.clientX - touchStartX;
-        const dy = t.clientY - touchStartY;
-        const absDx = Math.abs(dx), absDy = Math.abs(dy);
-
-        if (absDx < SWIPE_MIN && absDy < SWIPE_MIN) {
-            // tap → rotate
-            tryRotate();
-            return;
-        }
-
-        if (absDx >= absDy) {
-            // horizontal swipe → move proportional to distance (1 cell per BLOCK px)
-            const steps = Math.max(1, Math.round(absDx / 20));
-            const dir = dx < 0 ? -1 : 1;
-            for (let i = 0; i < steps; i++) {
-                if (!collides(piece.matrix, piece.x + dir, piece.y)) piece.x += dir;
-                else break;
-            }
-        } else {
-            if (dy < 0) {
-                // swipe up → rotate
-                tryRotate();
-            } else {
-                // swipe down: fast = hard drop, slow = soft drop
-                if (Date.now() - touchStartTime < 250) hardDrop();
-                else { moveDown(); dropTimer = 0; }
-            }
-        }
-    }, { passive: false });
     </script>
 </body>
 </html>
